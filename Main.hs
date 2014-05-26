@@ -23,11 +23,8 @@ fromLoadSuc (LoadSuccess _ v) = v
 
 files = ["file1", "file2", "file3"]
 
-compareFileList :: [(FilePath -> FilePath -> IO Bool)] -> FilePath -> IO [Bool]
-compareFileList cmp path = mapM ($ path) (map ($ "test") cmp)
-
 main = do
         plugins <- loadMagicPlugins
         let comparators = map (compareFiles) plugins
-        results <- mapM (compareFileList comparators) files
+        results <- sequence [c a b | c <- comparators, a <- files, b <- files]
         print results
