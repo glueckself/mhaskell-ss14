@@ -9,10 +9,15 @@ import System.IO
 import PluginAPI
 import Control.Monad
 import Data.Dynamic
+import System.Directory
 
 plugin = PluginI {
     magic = None,
     pluginName = "TestPlugin",
-    compareFiles = error "boom",
+    compareFiles = compareNames,
     displayFile = error "boom"
 }
+
+compareNames :: FilePath -> FilePath -> IO Bool
+compareNames p1 p2 = do return (p1 == p2)
+                        
