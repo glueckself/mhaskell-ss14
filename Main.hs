@@ -4,6 +4,7 @@ import System.Directory
 import System.Plugins
 import Data.List
 import PluginAPI
+import Control.Applicative
 
 loadPlugin :: FilePath -> IO PluginI
 loadPlugin file = do res <- ((load_ file ["./"] "plugin") :: IO (LoadStatus PluginI))
@@ -20,7 +21,13 @@ loadMagicPlugins = do fileList <- getDirectoryContents "./"
 fromLoadSuc (LoadFailure _)   = error "load failed"
 fromLoadSuc (LoadSuccess _ v) = v
 
+files = ["file1", "file2", "file3"]
+
+compareFileList :: [(FilePath -> FilePath -> IO Bool)] -> FilePath -> IO [Bool]
+compareFileList cmp path = mapM ($ path) (map ($ "test") cmp)
+
 main = do
         plugins <- loadMagicPlugins
-        let names = map (pluginName) plugins
-        print names
+        let comparators = map (compareFiles) plugins
+        results <- mapM (compareFileList comparators) files
+        print results
