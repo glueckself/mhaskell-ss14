@@ -16,6 +16,8 @@ aktueller fork von CV, der builded:
 
 <https://github.com/TomMD/CV>
 
+[mein fork mit implementiertem compareHistogram](git@github.com:m0ru/CV.git)
+
 ^ funktioniert mit:
 
 * c2hs-0.17.2
