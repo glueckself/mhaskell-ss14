@@ -1,0 +1,6 @@
+[submodule "cv_sample"]
+	path = cv_sample
+	url = git@github.com:m0ru/cv_sample.git
+[submodule "lib/CV"]
+	path = lib/CV
+	url = git@github.com:m0ru/CV.git
