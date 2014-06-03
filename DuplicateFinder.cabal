@@ -58,6 +58,7 @@ executable DuplicateFinder
   
   -- Other library packages from which modules are imported.
   build-depends:       base >=4.7 && <4.8, bytestring >=0.10 && <0.11, cryptohash >=0.11 && <0.12, directory >=1.2 && <1.3, plugins >=1.5 && <1.6
+  -- pipes, pipes-safe, text, utf8-string, rdf4h, hsparql
   
   -- Directories containing source files.
   -- hs-source-dirs:      
