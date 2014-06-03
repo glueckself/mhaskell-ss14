@@ -14,7 +14,8 @@ import Strings as S
 plugin = PluginI {
     magic = None,
     pluginName = "MD5 Compare",
-    getFileRepresentation = (liftM $ S.b2s) . hashFile,
+--    getFileRepresentation = (liftM $ S.b2s) . hashFile,
+    compareFile = compareMd5,
     displayFile = printFileName
 }
 

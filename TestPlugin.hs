@@ -15,9 +15,13 @@ import System.FilePath
 plugin = PluginI {
     magic = None,
     pluginName = "TestPlugin",
-    getFileRepresentation = getFileNameRep,
+--    getFileRepresentation = getFileNameRep,
+    compareFiles = compareNames,
     displayFile = error "boom"
 }
+
+compareNames :: FilePath -> FilePath -> IO Bool
+compareNames a b = do return a == b
 
 getFileNameRep :: FilePath -> IO String
 getFileNameRep fp = do return fp
