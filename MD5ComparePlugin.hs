@@ -25,4 +25,4 @@ compareMd5 :: FilePath -> FilePath -> IO Bool
 compareMd5 fp1 fp2 = liftM2 (==) (hashFile fp1) (hashFile fp2)
 
 printFileName :: FilePath -> IO ()
-printFileName fp = print (show fp)
+printFileName fp = putStrLn (show fp)
