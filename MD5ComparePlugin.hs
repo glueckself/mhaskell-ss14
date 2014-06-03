@@ -9,11 +9,12 @@ import System.IO
 import PluginAPI
 import Control.Monad
 import Data.Dynamic
+import Strings as S
 
 plugin = PluginI {
     magic = None,
     pluginName = "MD5 Compare",
-    compareFiles = compareMd5,
+    getFileRepresentation = (liftM $ S.b2s) . hashFile,
     displayFile = printFileName
 }
 

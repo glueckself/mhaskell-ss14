@@ -1,4 +1,5 @@
 {-# OPTIONS -fglasgow-exts #-}
+-- {-# LANGUAGE ExistentialQuantification #-}
 
 module PluginAPI where
 
@@ -11,6 +12,6 @@ data MagicType = None | Sequence ByteString Int
 data PluginI = PluginI {
     magic :: MagicType,
     pluginName :: String,
-    compareFiles :: FilePath -> FilePath -> IO Bool,
+    getFileRepresentation :: FilePath -> IO String,
     displayFile :: FilePath -> IO ()
 } deriving Typeable

@@ -10,14 +10,14 @@ import PluginAPI
 import Control.Monad
 import Data.Dynamic
 import System.Directory
+import System.FilePath
 
 plugin = PluginI {
     magic = None,
     pluginName = "TestPlugin",
-    compareFiles = compareNames,
+    getFileRepresentation = getFileNameRep,
     displayFile = error "boom"
 }
 
-compareNames :: FilePath -> FilePath -> IO Bool
-compareNames p1 p2 = do return (p1 == p2)
-                        
+getFileNameRep :: FilePath -> IO String
+getFileNameRep fp = do return fp
